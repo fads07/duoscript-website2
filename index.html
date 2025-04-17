@@ -9,13 +9,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #1e3a8a;  /* Dark blue */
-      --secondary: #eff6ff; /* Light blue background */
-      --accent: #3b82f6;   /* Bright blue */
-      --instagram: #E1306C;
-      --text: #1e3a8a;     /* Dark blue text */
+      --primary: #1a1a1a;
+      --secondary: #f8f9fa;
+      --accent: #0077b5;
+      --text: #333;
       --white: #ffffff;
-      --header-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
     }
     
     body {
@@ -28,34 +26,13 @@
     }
     
     header {
-      background: var(--header-gradient);
+      background-color: var(--primary);
       color: var(--white);
       padding: 3rem 2rem;
       text-align: center;
-      background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
       background-size: cover;
       background-position: center;
-      background-blend-mode: overlay;
-      position: relative;
-    }
-    
-    .product-showcase {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 2rem auto;
-      max-width: 800px;
-    }
-    
-    .product-icon {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      transition: transform 0.3s ease;
-    }
-    
-    .product-icon:hover {
-      transform: translateY(-5px);
     }
     
     header h1 {
@@ -63,7 +40,6 @@
       font-size: 2.8rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
     
     header p {
@@ -71,7 +47,6 @@
       max-width: 600px;
       margin: 0 auto;
       opacity: 0.9;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
     
     .section {
@@ -119,8 +94,23 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     
+    .member-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      border: 4px solid var(--accent);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .member-img:hover {
+      transform: scale(1.05);
+    }
+    
     .member h3 {
-      margin: 1rem 0 0.5rem;
+      margin: 0.5rem 0 0.2rem;
       font-size: 1.3rem;
       color: var(--primary);
     }
@@ -130,40 +120,17 @@
       color: #666;
     }
     
-    .member .social-links {
-      margin-top: 1rem;
-    }
-    
     .member a {
       display: inline-block;
       text-decoration: none;
-      font-size: 0.9rem;
-      margin: 0.3rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-    
-    .member a.linkedin {
       color: var(--accent);
-      border: 1px solid var(--accent);
-    }
-    
-    .member a.instagram {
-      color: var(--instagram);
-      border: 1px solid var(--instagram);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      transition: color 0.3s ease;
     }
     
     .member a:hover {
-      color: white;
-    }
-    
-    .member a.linkedin:hover {
-      background-color: var(--accent);
-    }
-    
-    .member a.instagram:hover {
-      background-color: var(--instagram);
+      color: #005582;
     }
     
     .member a i {
@@ -188,6 +155,62 @@
       font-size: 2rem;
       color: var(--accent);
       margin-bottom: 1rem;
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      overflow: auto;
+    }
+    
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 700px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .modal-img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    
+    .modal-caption {
+      color: white;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    
+    .close:hover {
+      color: #bbb;
     }
     
     footer {
@@ -226,9 +249,8 @@
         padding: 3rem 1.5rem;
       }
       
-      .product-showcase {
-        flex-direction: column;
-        align-items: center;
+      .modal-content {
+        width: 95%;
       }
     }
   </style>
@@ -237,10 +259,6 @@
   <header>
     <h1>DuoScript</h1>
     <p>The innovative dual-writing solution: Combining pen & mechanical pencil in one sleek tool</p>
-    <div class="product-showcase">
-      <img src="https://cdn-icons-png.flaticon.com/512/2553/2553275.png" alt="Pen" class="product-icon">
-      <img src="https://cdn-icons-png.flaticon.com/512/2553/2553270.png" alt="Mechanical Pencil" class="product-icon">
-    </div>
   </header>
   
   <section class="section">
@@ -270,43 +288,44 @@
     <h2>Meet Our Founders</h2>
     <div class="team">
       <div class="member">
+        <img src="https://chat.openai.com/cdn/user-uploads/image/file-1y5rNUbcVpAG3PyNHsG6cq.jpg" alt="S Mohammed Fahadh" class="member-img" onclick="openModal('https://chat.openai.com/cdn/user-uploads/image/file-1y5rNUbcVpAG3PyNHsG6cq.jpg', 'S Mohammed Fahadh - CEO')">
         <h3>S Mohammed Fahadh</h3>
         <p>Chief Executive Officer</p>
         <p>Visionary leader driving DuoScript's innovation and strategic direction</p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/s-mohammed-fahadh-883800332" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://www.instagram.com/megafury7?igsh=YXFjOHg2OXRrNTJw" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
-        </div>
+        <a href="https://www.linkedin.com/in/s-mohammed-fahadh-883800332" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       </div>
       <div class="member">
+        <img src="https://chat.openai.com/cdn/user-uploads/image/file-Gw23QV5jEqY5y4rDTpV9Lv.jpg" alt="Mithun Patil" class="member-img" onclick="openModal('https://chat.openai.com/cdn/user-uploads/image/file-Gw23QV5jEqY5y4rDTpV9Lv.jpg', 'Mithun Patil - CMO')">
         <h3>Mithun Patil</h3>
         <p>Chief Marketing Officer</p>
         <p>Marketing expert crafting DuoScript's brand identity and outreach</p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/mithun-patel-km-287b1a326" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://www.instagram.com/mithunpatel_km?igsh=ajkzNGVtYjY3Yjh2" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
-        </div>
+        <a href="https://www.linkedin.com/in/mithun-patel-km-287b1a326" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       </div>
       <div class="member">
+        <img src="https://chat.openai.com/cdn/user-uploads/image/file-FyUdsC9SmEib2HnjpgRh54.jpg" alt="Syed Zabiulla" class="member-img" onclick="openModal('https://chat.openai.com/cdn/user-uploads/image/file-FyUdsC9SmEib2HnjpgRh54.jpg', 'Syed Zabiulla - CFO')">
         <h3>Syed Zabiulla</h3>
         <p>Chief Financial Officer</p>
         <p>Financial strategist ensuring DuoScript's sustainable growth</p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/syed-zabiulla-8a9774336" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://www.instagram.com/mdsaif.king.330?igsh=MTFvYjF1NmljbHRrZA==" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
-        </div>
+        <a href="https://www.linkedin.com/in/syed-zabiulla-8a9774336" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       </div>
       <div class="member">
+        <img src="https://chat.openai.com/cdn/user-uploads/image/file-HC2KB55i5Fy422EDWDndpz.jpg" alt="Mujahid Syed" class="member-img" onclick="openModal('https://chat.openai.com/cdn/user-uploads/image/file-HC2KB55i5Fy422EDWDndpz.jpg', 'Mujahid Syed - COO')">
         <h3>Mujahid Syed</h3>
         <p>Chief Operating Officer</p>
         <p>Operations specialist optimizing DuoScript's production and logistics</p>
-        <div class="social-links">
-          <a href="https://www.instagram.com/ft.mujahid_?igsh=MWU1a3ducXZ5bTU2" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
-          <p>Connect with us for updates</p>
-        </div>
+        <p>Connect with us for updates</p>
       </div>
     </div>
   </section>
+  
+  <!-- The Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" class="modal-img" src="" alt="Founder image">
+      <div id="modalCaption" class="modal-caption"></div>
+    </div>
+  </div>
   
   <footer>
     <div class="footer-content">
@@ -321,5 +340,9 @@
       <p>&copy; 2025 DuoScript. All rights reserved.</p>
     </div>
   </footer>
-</body>
-</html>
+
+  <script>
+    // Modal functionality
+    function openModal(imgSrc, caption) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
