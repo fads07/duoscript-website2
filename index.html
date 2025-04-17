@@ -9,11 +9,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #1a1a1a;
-      --secondary: #f8f9fa;
-      --accent: #0077b5;
-      --text: #333;
+      --primary: #2a2d3e; /* Deep navy blue */
+      --secondary: #f5f5f7; /* Light gray */
+      --accent: #c19a6b; /* Rich gold */
+      --text: #333333;
       --white: #ffffff;
+      --dark: #1a1a1a;
     }
     
     body {
@@ -23,44 +24,84 @@
       background-color: var(--secondary);
       color: var(--text);
       line-height: 1.6;
+      background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1373&q=80');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
     }
     
     header {
-      background-color: var(--primary);
+      background-color: rgba(42, 45, 62, 0.9); /* Semi-transparent primary */
       color: var(--white);
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
       text-align: center;
-      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
       background-size: cover;
       background-position: center;
+      opacity: 0.15;
+      z-index: -1;
     }
     
     header h1 {
       margin: 0;
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 700;
       margin-bottom: 1rem;
+      letter-spacing: 1px;
     }
     
     header p {
-      font-size: 1.2rem;
-      max-width: 600px;
+      font-size: 1.3rem;
+      max-width: 700px;
       margin: 0 auto;
       opacity: 0.9;
+      font-weight: 300;
     }
     
     .section {
       padding: 4rem 2rem;
       max-width: 1200px;
-      margin: auto;
+      margin: 2rem auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background-image: url('https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.1;
+      z-index: 0;
     }
     
     .section h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 1.5rem;
       color: var(--primary);
       position: relative;
       display: inline-block;
+      z-index: 1;
     }
     
     .section h2::after {
@@ -78,6 +119,8 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
+      z-index: 1;
+      position: relative;
     }
     
     .member {
@@ -87,11 +130,13 @@
       text-align: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      z-index: 1;
     }
     
     .member:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
     
     .member-img {
@@ -103,6 +148,7 @@
       border: 4px solid var(--accent);
       cursor: pointer;
       transition: transform 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     
     .member-img:hover {
@@ -127,10 +173,11 @@
       font-size: 0.9rem;
       margin-top: 0.5rem;
       transition: color 0.3s ease;
+      font-weight: 500;
     }
     
     .member a:hover {
-      color: #005582;
+      color: #a07a4b;
     }
     
     .member a i {
@@ -142,19 +189,27 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
+      z-index: 1;
+      position: relative;
     }
     
     .feature-card {
       background: var(--white);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 2rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
     }
     
     .feature-card i {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: var(--accent);
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     
     /* Modal styles */
@@ -166,7 +221,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0,0,0,0.9);
       overflow: auto;
     }
     
@@ -189,13 +244,17 @@
       max-height: 80vh;
       border-radius: 8px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      border: 2px solid var(--accent);
     }
     
     .modal-caption {
-      color: white;
+      color: var(--white);
       text-align: center;
       margin-top: 15px;
       font-size: 1.2rem;
+      padding: 10px 20px;
+      background-color: rgba(42, 45, 62, 0.8);
+      border-radius: 4px;
     }
     
     .close {
@@ -210,39 +269,63 @@
     }
     
     .close:hover {
-      color: #bbb;
+      color: var(--accent);
     }
     
     footer {
       background-color: var(--primary);
       color: var(--white);
       text-align: center;
-      padding: 2rem;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1498&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 0;
     }
     
     .footer-content {
       max-width: 800px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
     
     .social-links {
-      margin: 1rem 0;
+      margin: 1.5rem 0;
     }
     
     .social-links a {
       color: var(--white);
-      margin: 0 10px;
-      font-size: 1.2rem;
-      transition: color 0.3s ease;
+      margin: 0 15px;
+      font-size: 1.3rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
     }
     
     .social-links a:hover {
       color: var(--accent);
+      transform: translateY(-3px);
     }
     
     @media (max-width: 768px) {
       header h1 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
       }
       
       .section {
@@ -251,6 +334,11 @@
       
       .modal-content {
         width: 95%;
+      }
+      
+      .section::before {
+        width: 150px;
+        height: 150px;
       }
     }
   </style>
@@ -346,3 +434,34 @@
     function openModal(imgSrc, caption) {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImage');
+      const modalCaption = document.getElementById('modalCaption');
+      
+      modal.style.display = "block";
+      modalImg.src = imgSrc;
+      modalCaption.innerHTML = caption;
+      
+      // Close modal when clicking outside the image
+      modal.onclick = function(event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+      
+      // Close modal with ESC key
+      document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode === 27) {
+          closeModal();
+        }
+      };
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = "none";
+      document.onkeydown = null;
+    }
+  </script>
+</body>
+</html>
+    
+ 
